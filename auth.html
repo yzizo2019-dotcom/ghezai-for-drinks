@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الدخول / إنشاء الحساب</title>
+<link rel="stylesheet" href="style.css">
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+window.addEventListener("DOMContentLoaded", () => {
+
+    // تسجيل الدخول
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = loginForm.email.value;
+        const password = loginForm.password.value;
+
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) alert(error.message);
+        else window.location.href = "index.html";
+    });
+
+    // إنشاء حساب
+    const signupForm = document.getElementById("signupForm");
+    signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = signupForm.email.value;
+        const password = signupForm.password.value;
+
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) alert(error.message);
+        else alert("تم إنشاء الحساب بنجاح، تحقق من بريدك الإلكتروني.");
+    });
+});
+</script>
+</head>
+<body>
+<h1>تسجيل الدخول / إنشاء الحساب</h1>
+
+<div class="auth-container">
+    <div class="form-box">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+    </div>
+
+    <div class="form-box">
+        <h2>إنشاء حساب جديد</h2>
+        <form id="signupForm">
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="password" name="password" placeholder="كلمة المرور" required>
+            <button type="submit">إنشاء حساب</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

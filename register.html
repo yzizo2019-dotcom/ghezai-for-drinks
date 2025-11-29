@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل حساب زبون</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth-container">
+    <h2>📝 إنشاء حساب زبون</h2>
+    <form id="registerForm" class="auth-form">
+      <label>الاسم الكامل
+        <input type="text" id="name" required>
+      </label>
+      <label>البريد الإلكتروني
+        <input type="email" id="email" required>
+      </label>
+      <label>كلمة المرور
+        <input type="password" id="password" required>
+      </label>
+      <label>📞 الهاتف
+        <input type="tel" id="phone" placeholder="+213">
+      </label>
+      <label>📍 العنوان
+        <input type="text" id="address">
+      </label>
+      <button type="submit" class="btn-primary">تسجيل</button>
+      <p class="form-note">لديك حساب؟ <a href="login.html">سجل الدخول</a></p>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const user = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        password: document.getElementById('password').value,
+        phone: document.getElementById('phone').value.trim(),
+        address: document.getElementById('address').value.trim()
+      };
+
+      // منع تكرار البريد
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      if (users.some(u => u.email === user.email)) {
+        alert('هذا البريد مسجل مسبقاً.');
+        return;
+      }
+
+      users.push(user);
+      localStorage.setItem('users', JSON.stringify(users));
+      localStorage.setItem('currentUser', JSON.stringify(user)); // تسجيل تلقائي
+      alert('✅ تم إنشاء الحساب وتسجيل الدخول بنجاح!');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
+<script type="module">
+import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
+
+// إنشاء اتصال مع Supabase
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>

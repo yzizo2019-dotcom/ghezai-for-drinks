@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>السلة</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛒 السلة</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرجوع للمتجر</a></li>
+        <li><a href="cart.html">السلة</a></li>
+        <li><a href="login.html">دخول</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="cart-container">
+    <h2>منتجاتك</h2>
+    <div id="cart-list" class="cart-list"></div>
+
+    <div class="cart-summary">
+      <div><strong>الإجمالي:</strong> <span id="total">0 دج</span></div>
+      <div class="cart-actions">
+        <button class="clear-btn" id="clear">تفريغ السلة</button>
+        <button class="checkout-btn" id="checkout">إتمام الشراء</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 متجر المشروبات الغازية والعصائر</p>
+  </footer>
+
+  <script>
+    function formatCurrency(v) {
+      return v + ' دج';
+    }
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const list = document.getElementById('cart-list');
+      list.innerHTML = '';
+
+      let total = 0;
+      cart.forEach((item, idx) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h4>${item.name}</h4>
+            <div class="price">السعر الفردي: ${formatCurrency(item.price)}</div>
+            <div class="qty">الكمية: ${item.quantity}</div>
+            <div class="subtotal">المجموع: ${formatCurrency(subtotal)}</div>
+          </div>
+          <button data-index="${idx}" class="remove-btn">❌ حذف</button>
+        `;
+        list.appendChild(div);
+      });
+
+      document.getElementById('total').textContent = formatCurrency(total);
+
+      list.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const i = Number(e.target.dataset.index);
+          const cartNow = JSON.parse(localStorage.getItem('cart') || '[]');
+          cartNow.splice(i, 1);
+          localStorage.setItem('cart', JSON.stringify(cartNow));
+          renderCart();
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCart();
+
+      document.getElementById('clear').addEventListener('click', () => {
+        localStorage.removeItem('cart');
+        renderCart();
+      });
+
+      document.getElementById('checkout').addEventListener('click', () => {
+        const cartItems = JSON.parse(localStorage.getItem('cart') || '[]');
+        const user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+
+        if (!user.email) {
+          alert('⚠️ يجب تسجيل الدخول أولاً قبل إتمام الشراء.');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        if (cartItems.length === 0) {
+          alert('❌ السلة فارغة، أضف منتجات أولاً.');
+          return;
+        }
+
+        const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        const order = {
+          customer: user,
+          items: cartItems,
+          total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+          date: new Date().toLocaleString()
+        };
+
+        orders.push(order);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        localStorage.removeItem('cart');
+        renderCart();
+
+        alert('✅ تم إرسال الطلب، شكراً لك يا ' + user.name);
+      });
+    });
+  </script>
+</body>
+</html>
