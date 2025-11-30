@@ -1,59 +1,168 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر المشروبات</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>متجر غزاي لبيع و نقل المشروبات الغازية والعصائر</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>متجر المشروبات</h1>
+  <header>
+    <h1>🍹 متجر غزاي لبيع و نقل المشروبات الغازية والعصائر</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="cart.html">السلة</a></li>
+        <li><a href="#">عروض خاصة</a></li>
+        <li><a href="#contact">تواصل معنا</a></li>
+        <li class="spacer"></li>
+        <li><a href="register.html">تسجيل</a></li>
+        <li><a href="login.html">دخول</a></li>
+        <li><a href="admin.html">الإدارة</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<div id="products-container">
-  <div class="product" data-name="كوكاكولا" data-price="100" data-image="coke.jpg">
-    <h2>كوكاكولا</h2>
-    <p>سعر: 100 دج</p>
-    <input type="number" class="qty" value="1" min="1">
-    <button class="btn-add">أضف للطلب</button>
+  <section class="hero">
+    <h2>انتعش مع أفضل المشروبات!</h2>
+    <p>نوفر لك جميع أنواع العصائر والمشروبات الغازية بأفضل الأسعار مع التوصيل.</p>
+    <button onclick="window.location.href='cart.html'">تسوق الآن</button>
+  </section>
+
+  <section class="products">
+    <h2>منتجاتنا</h2>
+    <div class="product-grid">
+      <!-- مثال منتج -->
+      <div class="product" data-name="فانتا" data-price="720" data-image="https://jainslittleindia.com/wp-content/uploads/2023/11/fanta.jpg">
+        <img src="https://jainslittleindia.com/wp-content/uploads/2023/11/fanta.jpg" alt="فانتا" class="product-image">
+        <h3>فانتا</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      <div class="product" data-name="كوكا كولا" data-price="660" data-image="data:image/webp;base64,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">
+        <img src="data:image/webp;base64,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" alt="كوكا كولا" class="product-image">
+        <h3>كوكا كولا</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="سيليكتو" data-price="720" data-image="data:image/webp;base64,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">
+        <img src="data:image/webp;base64,UklGRh4GAABXRUJQVlA4IBIGAACwHwCdASqKALQAPp1MoUylpCMiI/nZGLATiWVu4XNBAXajkob7bW88P6S94w3l/IgNzOXUJe0T6/Z8ezmVYwY47vAz9E6HXOzqF9IT9zPYwGIRrq/5wPQwXhMXkX5wwAhNq1+SS7fIVOTGrv1wiudJ7N+kgx+t22kwDatCgaz6vdGUpzvZwvK3sS3JgoaH6LVuZtaBcfglHdbn0WZE0ysQPa/byOoO2hB/OkZJbljMO+crZaegWLSBmE+w1we3SL5+nxawdL/wc/NTc1vXG22qSL8twCWajPVV9dvfOaJkhP/nCL6rvyHy5UbjRge5v0LVjQCjThJ4GyvluYuOU42b/nBkvNoAAP7/Kwgyje63jMOjn+7MYeMPlY3tig5za6ae7Ocws2X8L/qXv3S7Avr9uNSi7/4kfnq3J0V7H7dOkxHMulmqohoabfrBmkMiZVvdgFj996a4oepUYMZ0sOiaswMUJINFr5TppCm1kptNMGBhX9FWah0ElZwS+Qjn33IyMg+NIUWqdIa/qC+vQyyegstT6lg3A1pvZh4vl6rnFHM8V4SPcYGy32UQI3bEl2QjNwV3pQ5SiDN+kmTYXdXM2vdA8bBhWgl199z8VouO2fuq83tZWmT+8c1D4X7PFeQqJ6liKDNZM9ED5X0sM/cUYnvNKpFJQsgqn3YeuKXvkt0M71mjZtCTt3St553l75nX1U7GBi8idEBBgXb5Dus5eOhiy5a2GozmVy4g9r0aK0PFpGxn/+Prl/CXXH/366/may4adqV5KzgYaUL46aBDM7tlaqIucdTac091Goi45plxjTU3HBX3xmBrLXV3tF8tzy0yNwfmzEnZ1bcRK0mfK2xzd9hI54ALgUQ/V63UxJbGzPEKLOQMDYxxhkiAmFIapXJY8uIrLhuovQfw7INJSOwhqzUgrFPN0D0HmdTqwBaRZ3pl6DVXBP0t01q/VW2AYWfoh3GphJ04fcnWHrx6yAEFBbSM+qNksyzBkqVQW5tUV+ve311Fqjxeg5OrRNg7pQNHAPyCwl+ORdOyo4yA63oNuSTwznEn2whz4+UJYDvWtADba3mA5VdWU1BSPpCYeBWexx1UZ5wmyUxtR0gM+Mbrm5mhZsjYxMoIZdk/dPUyT/V4wEykeT/r797mFL1kCyEH9U695bT82tGhe3+zNiG1n2KrJQqxXLr8brUJms5WHG5fn5bN3IKROwioP5gdENRd1ll7Z4rdi/EZbq4BdgG18dPFTBEgupjJEBRJzv6kxdaCKDBQRlY/b/SxXCSO5Z3YfBkf7WFsIUVrfnPBxotS1JxS4RcskWpXrN0dZ6p1bNg8LDeS3Kb2lHxy8hNP0Dz2UICzLuxmhWAxX+QtRYaT4ZmLw5hvgUTJ5Qgo4bVugaXSE2035UoFaTl/mhtXEYORsHK+kzfymW8m1eDL0oXvjkwF1k3+SaiRpnjZK+zfsxMm/LLn2wvkciOs+Bao7UYv7DEMjJivW0nHsz09ybu2/v31g+wqRqz8vfxsFGjHtt2q34Nm59JxXBTZ7wiNu6cjGMzKu6b2u/7/WVak3CdS9ec60872Uvr3OC0ELqX16iYBeUAxx6GYwT5MA0K8mxc3cq1p4opF+1xzxhwnh8GmIe2C+oz49t4288rIbWXqeLm/XCtl/sAghHGH5iggXOUGGJSHqd7o7TSOozrUqyk1pxcjl3JsplGju8qom6ms12XPZSPJW4b7cfZW6K7rXKt6rEIkrSmTZxIDMaQyOz9Ws2yuokICsiW8hzIIYL7mS0mEx1gEOGGvLggx63wEYp35MhzC3emZr5B39CNTZ22Jm0+mkAMh+jlp7lPX5TR5zfErPpQKBSQQqqvAKkoNjKYgAKbtTTaQltgh9vRoyZTAN4s/JDBhX9J1971R8V4zKUltM3bcGWNhqblfGwdRcQRlYkBd6C4EbBlqRuQ7Rtsp35FbruGJhTL2dC5mLf3sl/4WM041iGJ8cu7giwRCAXZPJ2TgxKTijemL3p441npYqyb0plbQU7SRrWcJ9SFgPnJKlju8iGt5fT11PgqIz5KSkk0/yW7gbiOWsAAAAAA=" alt="فانتا" class="product-image">
+        <h3>سيليكتو</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="رامي" data-price="720" data-image="data:image/webp;base64,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">
+        <img src="data:image/webp;base64,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" alt="فانتا" class="product-image">
+        <h3>رامي</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="7 Up" data-price="720" data-image="data:image/webp;base64,UklGRmwFAABXRUJQVlA4IGAFAACwHACdASpzALQAPp1IoEwlo6MipXMJsLATiWNu3V+orclGUhb+23Flhq/6fdjeYDyyvVLvQvod9Mi0x1wufR02GOj0WtD77p6EpFU6FP5UC5fpJQ1Fz6SuaTFfJyXzkrvMLa7CxS8l66rk5/jyOsyydLa4v+sMVb3oRJzn4sBDNNQT9rMuOVDL1X2eRlzwu5EpdhLqh/yRl1b6PeJRYdJeFvGMKyk9Tuqo6Lqu3bmfXCTVYmNXB2A5AgqUP3ZPTV1PQ/8iwroIsaHT+cIPePrUZlRtdWGWIH5QzHPv5riqg3rMjKyr5UwuGwIzburAAP75sQAaaLBxSF0h8mJLaxfWuGazd08M1k6vPmcTq/wMNECdX2ne9QdCxFI7ron+F04YbT/6o659m/UA+Wv9bSqrdfHgG6AXINEQAIrjFifdreKxxfMhfMvYHT3t7l1S00BSXK9U/5Zc/wJH6GbUGeCeg5NKfhjPsSh+raCBGyoj8t0U7mkaFR6mLpxjtfLjBJHMKmTyzcs9WaooaKZdVD4Clej5Z6b9BgSdUIvbqTw3FYzqosyZJ7eRE64BqVfHMwbJ7tlAGWUjJBjdDRAPu7wZr7BSIrHxbFFpeOvgqEwlNh3h/EfRusN93kkDIaWzp6ahicjUK45PiCnVKWOTmpM7tLltlNIrPL0Sy5BFcjpKEvIpwTmDcIcnyDI1vy9vMLnuuvRbxOii0Nwm9sJkeDyKmYu+Avb5Be5dA9BTmgh7HjI4zNPcERJqZLZEorhgDwGPOeq52Mvo7mNxOD8vpL7zeALAfVN14hrxi2fhFJ5Sdq6HQ4wOavrxSqlWfCCgVSJN7IcIH/PaCFBDUhAOtGYT3rCIQkZiga5RG9GwoKRXkthp1o8rYXWr8Rt0jlZIxnYusDSuxLROxqSF/ViKHnoFyLkTuKZnP8z/rfUbZPOpAgnZB3ihWZXAyJfIrLBYDpEOru9igpW2ItVOHFeAk3w2b+CDAic08OKgLzI+Hs2vm8U35kxQUk0LXgVC/J09jocL3qmgAK0b4Gf5OcEFtKZ1GRQ9iF2+nYrzeE+J53+1g263O6QyBer9gaRlJUB37k6v5lHC6Tqo2AD1dHS4SSz/YtyTcXsjVlR/KDhQcDQrezk7aNEDKLWFN2NaHH3xPDgnPRXLIi3+60+NureZ/ua246hbmAR5vr9c3ZtqsWrn8k4SFgpSci86sA7fGxEPhaQR6rLblpdnZY5wjmD1ksJ0WO05bD2BWV2nnN/0BzCiibbaCjYa0QL2jVXsPXJqB7OnISE3/paJuZJdn3MY4rTb/b/QZmWcw847ZxA0LurDBH4jrdzikb6Nw91EjNSbDQyj5M46bwZVWZ7++vIYmpJ/bw/j/eLHM/ICWQddlpKEvaTlzj4zAKr2hw3iQD4865i0CBHua9CGVKIwRtsa3fq1xeBipStluNArtEXWeCj+iUrPOE8m5EJo07DPPFColRbaH2kSHHl/5jDCO5fNJpi5nNMDmrjDErePlB2a4BV/8ADvxJ6hZx2V24z3OVrHlZHvAI6eTa0JIu3B4bnf9Tpl9bDVpoL+vkgUxg7znuQBhXZKJVYBvtwTjJ8D5++dmOtHbs03CFve2Ptn74tzs4osd/zQI+s0lE9K+PKyDDGbFiwAR45dASm/OAAB+GwZhk/beYq2CJT2FIXWJ3bBmADIO/BtIE4CuCx3B1RyxD3DE6JcPTA+Nv9wPduKNuCHZetNuB759cUxn5475EFd426AMPrF3GVCec4qMYM2dvboZ+ByJySVDobinRm/jES5pZ8Jxfd4lIYfIiq0y5P8CKn8I/gcwCMI/g8SZTbX6AAAAA==">
+        <img src="data:image/webp;base64,UklGRmwFAABXRUJQVlA4IGAFAACwHACdASpzALQAPp1IoEwlo6MipXMJsLATiWNu3V+orclGUhb+23Flhq/6fdjeYDyyvVLvQvod9Mi0x1wufR02GOj0WtD77p6EpFU6FP5UC5fpJQ1Fz6SuaTFfJyXzkrvMLa7CxS8l66rk5/jyOsyydLa4v+sMVb3oRJzn4sBDNNQT9rMuOVDL1X2eRlzwu5EpdhLqh/yRl1b6PeJRYdJeFvGMKyk9Tuqo6Lqu3bmfXCTVYmNXB2A5AgqUP3ZPTV1PQ/8iwroIsaHT+cIPePrUZlRtdWGWIH5QzHPv5riqg3rMjKyr5UwuGwIzburAAP75sQAaaLBxSF0h8mJLaxfWuGazd08M1k6vPmcTq/wMNECdX2ne9QdCxFI7ron+F04YbT/6o659m/UA+Wv9bSqrdfHgG6AXINEQAIrjFifdreKxxfMhfMvYHT3t7l1S00BSXK9U/5Zc/wJH6GbUGeCeg5NKfhjPsSh+raCBGyoj8t0U7mkaFR6mLpxjtfLjBJHMKmTyzcs9WaooaKZdVD4Clej5Z6b9BgSdUIvbqTw3FYzqosyZJ7eRE64BqVfHMwbJ7tlAGWUjJBjdDRAPu7wZr7BSIrHxbFFpeOvgqEwlNh3h/EfRusN93kkDIaWzp6ahicjUK45PiCnVKWOTmpM7tLltlNIrPL0Sy5BFcjpKEvIpwTmDcIcnyDI1vy9vMLnuuvRbxOii0Nwm9sJkeDyKmYu+Avb5Be5dA9BTmgh7HjI4zNPcERJqZLZEorhgDwGPOeq52Mvo7mNxOD8vpL7zeALAfVN14hrxi2fhFJ5Sdq6HQ4wOavrxSqlWfCCgVSJN7IcIH/PaCFBDUhAOtGYT3rCIQkZiga5RG9GwoKRXkthp1o8rYXWr8Rt0jlZIxnYusDSuxLROxqSF/ViKHnoFyLkTuKZnP8z/rfUbZPOpAgnZB3ihWZXAyJfIrLBYDpEOru9igpW2ItVOHFeAk3w2b+CDAic08OKgLzI+Hs2vm8U35kxQUk0LXgVC/J09jocL3qmgAK0b4Gf5OcEFtKZ1GRQ9iF2+nYrzeE+J53+1g263O6QyBer9gaRlJUB37k6v5lHC6Tqo2AD1dHS4SSz/YtyTcXsjVlR/KDhQcDQrezk7aNEDKLWFN2NaHH3xPDgnPRXLIi3+60+NureZ/ua246hbmAR5vr9c3ZtqsWrn8k4SFgpSci86sA7fGxEPhaQR6rLblpdnZY5wjmD1ksJ0WO05bD2BWV2nnN/0BzCiibbaCjYa0QL2jVXsPXJqB7OnISE3/paJuZJdn3MY4rTb/b/QZmWcw847ZxA0LurDBH4jrdzikb6Nw91EjNSbDQyj5M46bwZVWZ7++vIYmpJ/bw/j/eLHM/ICWQddlpKEvaTlzj4zAKr2hw3iQD4865i0CBHua9CGVKIwRtsa3fq1xeBipStluNArtEXWeCj+iUrPOE8m5EJo07DPPFColRbaH2kSHHl/5jDCO5fNJpi5nNMDmrjDErePlB2a4BV/8ADvxJ6hZx2V24z3OVrHlZHvAI6eTa0JIu3B4bnf9Tpl9bDVpoL+vkgUxg7znuQBhXZKJVYBvtwTjJ8D5++dmOtHbs03CFve2Ptn74tzs4osd/zQI+s0lE9K+PKyDDGbFiwAR45dASm/OAAB+GwZhk/beYq2CJT2FIXWJ3bBmADIO/BtIE4CuCx3B1RyxD3DE6JcPTA+Nv9wPduKNuCHZetNuB759cUxn5475EFd426AMPrF3GVCec4qMYM2dvboZ+ByJySVDobinRm/jES5pZ8Jxfd4lIYfIiq0y5P8CKn8I/gcwCMI/g8SZTbX6AAAAA==">
+        <h3>7 Up</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="ايزم" data-price="720" data-image="https://th.bing.com/th/id/OIP.BSf1pQfJvpqUSpjBpxQOuwHaHa?w=171&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+        <img src="https://th.bing.com/th/id/OIP.BSf1pQfJvpqUSpjBpxQOuwHaHa?w=171&h=180&c=7&r=0&o=7&pid=1.7&rm=3" alt="فانتا" class="product-image">
+        <h3>ايزم</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="شوابس" data-price="720" data-image="data:image/webp;base64,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">
+        <img src="data:image/webp;base64,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">
+        <h3>شوابس</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="TNT" data-price="720" data-image="https://tse4.mm.bing.net/th/id/OIP.2M8ZRxreMmbkFQPor10v4QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+        <img src="https://tse4.mm.bing.net/th/id/OIP.2M8ZRxreMmbkFQPor10v4QHaHa?rs=1&pid=ImgDetMain&o=7&rm=3">
+        <h3>TNT</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="Ifri 1.5L" data-price="720" data-image="https://th.bing.com/th/id/OIP._tdj6-hgmRVhgnmDRUSuTAHaHa?w=151&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+        <img src="https://th.bing.com/th/id/OIP._tdj6-hgmRVhgnmDRUSuTAHaHa?w=151&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+        <h3>Ifri 1.5L</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+      
+      <div class="product" data-name="Ifri 0.5L" data-price="720" data-image="https://th.bing.com/th/id/OIP.gEusFXLmMGckUbVUEeXg7AHaHa?w=151&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+        <img src="https://th.bing.com/th/id/OIP.gEusFXLmMGckUbVUEeXg7AHaHa?w=151&h=180&c=7&r=0&o=7&pid=1.7&rm=3">
+        <h3>Ifri 0.5L</h3>
+        <p>السعر: 720 دج</p>
+        <label>الكمية: <input type="number" min="1" value="1" class="qty"></label>
+        <button class="btn-add">أضف للسلة</button>
+      </div>
+
+      <!-- أضف باقي المنتجات بنفس البنية -->
+    </div>
+  </section>
+
+  <main class="notice">
+    <p>إنشاء حساب يتيح لك إتمام الشراء بسرعة وظهور بياناتك في لوحة الإدارة.</p>
+  </main>
+
+  <footer id="contact">
+  <p>© 2025 متجر المشروبات الغازية والعصائر - جميع الحقوق محفوظة</p>
+  <div class="contact-info">
+    <p>📞 الهاتف: <a href="tel:+213669127973">+213 669 12 79 73</a></p>
+    <p>📧 البريد الإلكتروني: <a href="mailto:nadji0669_.12@icloud.com">nadji0669_.12@icloud.com</a></p>
+    <p>📍 العنوان: شارع السوق المركزي، الشلف، الجزائر</p>
+    <p>💬 واتساب: <a href="https://wa.me/213669127973" target="_blank">راسلنا الآن</a></p>
   </div>
-</div>
-
-<footer>
-<p>🌐 رابط المتجر الرسمي: <a href="https://youcef213637.github.io/soft-drinks/" target="_blank">زيارة الموقع</a></p>
 </footer>
 
+
+  <script>
+    function addToCart(item) {
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert('✅ تم إضافة المنتج إلى السلة!');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.product').forEach(card => {
+        const button = card.querySelector('.btn-add');
+        button.addEventListener('click', () => {
+          const qtyInput = card.querySelector('.qty');
+          const item = {
+            name: card.dataset.name,
+            price: Number(card.dataset.price),
+            image: card.dataset.image,
+            quantity: Number(qtyInput.value) || 1
+          };
+          addToCart(item);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
+<footer>
+    <p>🌐 رابط المتجر الرسمي: <a href="https://youcef213637.github.io/soft-drinks/" target="_blank">زيارة الموقع</a></p>
+</footer>
 <script type="module">
 import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
 import { SUPABASE_URL, SUPABASE_ANON_KEY } from "./config.js";
 
+// إنشاء اتصال مع Supabase
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-async function sendOrder(item) {
-  const { data, error } = await supabase.from("orders").insert([item]);
-  if (error) {
-    console.error("Error:", error);
-    alert("❌ حدث خطأ أثناء إرسال الطلب");
-  } else {
-    alert("✔ تم إرسال الطلب بنجاح");
-  }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".product").forEach(card => {
-    const button = card.querySelector(".btn-add");
-    button.addEventListener("click", () => {
-      const qtyInput = card.querySelector(".qty");
-      const item = {
-        name: card.dataset.name,
-        price: Number(card.dataset.price),
-        quantity: Number(qtyInput.value) || 1,
-        image: card.dataset.image,
-        created_at: new Date().toISOString()
-      };
-      sendOrder(item);
-    });
-  });
-});
 </script>
-</body>
-</html>
